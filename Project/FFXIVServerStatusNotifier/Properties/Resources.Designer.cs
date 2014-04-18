@@ -72,6 +72,16 @@ namespace FFXIVServerStatusNotifier.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon settingsicon {
+            get {
+                object obj = ResourceManager.GetObject("settingsicon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon smallicon {
             get {
                 object obj = ResourceManager.GetObject("smallicon", resourceCulture);

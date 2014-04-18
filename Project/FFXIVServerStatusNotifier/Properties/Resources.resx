@@ -121,6 +121,9 @@
   <data name="chime" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\chime.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="settingsicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="smallicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\smallicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

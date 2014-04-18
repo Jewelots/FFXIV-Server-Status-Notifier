@@ -70,6 +70,7 @@ namespace FFXIVServerStatusNotifier
             if (settingsForm != null && !settingsForm.IsDisposed)
             {
                 settingsForm.WindowState = FormWindowState.Normal;
+                settingsForm.Settings_Load();
                 settingsForm.BringToFront();
                 settingsForm.Focus();
                 return;
@@ -77,8 +78,8 @@ namespace FFXIVServerStatusNotifier
 
             //Create a new settings form, and show it
             settingsForm = new SettingsForm();
-            settingsForm.Settings_Load();
             settingsForm.Show();
+            settingsForm.Settings_Load();
         }
 
         /// <summary>

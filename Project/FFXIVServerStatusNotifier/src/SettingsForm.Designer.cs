@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.serverSelectBox = new System.Windows.Forms.ComboBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -96,6 +97,7 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.serverSelectBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(Properties.Resources.settingsicon));
             this.Name = "SettingsForm";
             this.Text = "Settings";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SettingsForm_Closed);
