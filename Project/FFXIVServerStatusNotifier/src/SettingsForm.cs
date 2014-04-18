@@ -11,10 +11,18 @@ namespace FFXIVServerStatusNotifier
     public partial class SettingsForm : Form
     {
         /// <summary>
-        /// Initialises the form
+        /// A callback called when the form is closed
         /// </summary>
-        public SettingsForm()
+        Action closeCallback;
+
+        /// <summary>
+        /// Initialises the form with a callback
+        /// </summary>
+        /// <param name="onCloseCallback">A callback called when the form is closed</param>
+        public SettingsForm(Action onCloseCallback)
         {
+            closeCallback = onCloseCallback;
+
             InitializeComponent();
 
             //Populate the Server Selection dropdown
@@ -28,6 +36,13 @@ namespace FFXIVServerStatusNotifier
             {
                 checkDelayBox.Items.Add(pair.Key);
             }
+        }
+
+        /// <summary>
+        /// Initialises the form
+        /// </summary>
+        public SettingsForm() : this(null)
+        {
         }
 
         /// <summary>
@@ -69,6 +84,11 @@ namespace FFXIVServerStatusNotifier
             //Save the settings and close the form
             Settings_Save();
             this.Close();
+
+            if (closeCallback != null)
+            {
+                closeCallback();
+            }
         }
 
         /// <summary>

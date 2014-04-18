@@ -35,9 +35,7 @@ namespace FFXIVServerStatusNotifier
             //Add Running checkbox
             runningCheckItem = new MenuItem();
             runningCheckItem.Index = 1;
-            runningCheckItem.Text = "&Running";
             runningCheckItem.Click += new System.EventHandler(runningCheckItem_Click);
-            runningCheckItem.Checked = false;
             trayMenu.MenuItems.Add(runningCheckItem);
 
             //Add Exit
@@ -57,6 +55,8 @@ namespace FFXIVServerStatusNotifier
             //Initialise Status Checker
             statusChecker = new StatusChecker();
             statusChecker.OnServerOnline += ServerStatusCheckComplete;
+
+            EnableServerStatusChecking();
         }
         
         /// <summary>
@@ -77,7 +77,7 @@ namespace FFXIVServerStatusNotifier
             }
 
             //Create a new settings form, and show it
-            settingsForm = new SettingsForm();
+            settingsForm = new SettingsForm(OnSettingsChanged);
             settingsForm.Show();
             settingsForm.Settings_Load();
         }
@@ -119,6 +119,7 @@ namespace FFXIVServerStatusNotifier
         private void EnableServerStatusChecking()
         {
             runningCheckItem.Checked = true;
+            runningCheckItem.Text = "&Running";
 
             statusChecker.BeginCheckForStatus(Settings.Default.ServerName, Settings.Default.CheckDelay);
         }
@@ -129,8 +130,29 @@ namespace FFXIVServerStatusNotifier
         private void DisableServerStatusChecking()
         {
             runningCheckItem.Checked = false;
+            runningCheckItem.Text = "&Run";
 
             statusChecker.StopCheckForStatus();
+        }
+
+        /// <summary>
+        /// Callback for when settings are changed
+        /// </summary>
+        private void OnSettingsChanged()
+        {
+            if (runningCheckItem.Checked)
+            {
+                RestartServerStatusChecking();
+            }
+        }
+
+        /// <summary>
+        /// Restart checking for server status
+        /// </summary>
+        private void RestartServerStatusChecking()
+        {
+            statusChecker.StopCheckForStatus();
+            statusChecker.BeginCheckForStatus(Settings.Default.ServerName, Settings.Default.CheckDelay);
         }
 
         /// <summary>
